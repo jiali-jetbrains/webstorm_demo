@@ -10,34 +10,124 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>React Mockup</title>
+    <style>
+      :root {
+        --bg: radial-gradient(1000px 600px at 20% -20%, #e6f4ff 0%, transparent 50%),
+              radial-gradient(800px 500px at 120% 20%, #fff1f0 0%, transparent 45%),
+              #f7f8fa;
+        --card-bg: #ffffff;
+        --card-border: rgba(0,0,0,0.06);
+        --text: #1f2328;
+        --muted: #667085;
+        --primary: #1677ff;
+        --primary-contrast: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: radial-gradient(1000px 600px at 20% -20%, rgba(9,88,217,0.15) 0%, transparent 50%),
+                radial-gradient(800px 500px at 120% 20%, rgba(168,7,26,0.12) 0%, transparent 45%),
+                #0b0f17;
+          --card-bg: #0f1722;
+          --card-border: rgba(255,255,255,0.08);
+          --text: #e6edf3;
+          --muted: #a0aec0;
+          --primary: #2f81f7;
+          --primary-contrast: #0b0f17;
+        }
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--text);
+        background: var(--bg);
+      }
+      .mockup-page {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .card {
+        width: 100%;
+        max-width: 680px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        text-align: center;
+      }
+      .logo {
+        width: 120px;
+        height: 120px;
+        display: block;
+        margin: 0 auto 12px auto;
+        filter: drop-shadow(0 6px 16px rgba(22,119,255,0.25));
+        animation: spin 18s linear infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .logo { animation: none; }
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+      h1 {
+        margin: 8px 0 6px 0;
+        font-size: 28px;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 0 0 18px 0;
+        color: var(--muted);
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .btn {
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--card-border);
+        background: transparent;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn.primary {
+        background: var(--primary);
+        color: var(--primary-contrast);
+        border-color: var(--primary);
+      }
+      .hint {
+        margin-top: 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <main class="mockup-page">
+        <section class="card" role="region" aria-label="React mockup">
+          <img class="logo" src="logo512.png" alt="React logo" />
+          <h1>React App Mockup</h1>
+          <p>A simple mockup page rendered from index.html</p>
+          <div class="actions">
+            <a class="btn primary" href="https://react.dev" target="_blank" rel="noreferrer">Learn React</a>
+            <a class="btn" href="%PUBLIC_URL%/manifest.json">App manifest</a>
+          </div>
+          <div class="hint">This placeholder will be replaced when the React app mounts.</div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
